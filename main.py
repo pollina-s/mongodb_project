@@ -33,3 +33,8 @@ print(collection.count_documents('subscribers': subs))
 for channel in collection.find():
     print(channel)
 
+#  запрос сложнее с выборкой конкретных записей, подходящих под нужный запрос
+print('Количество просмотров > 30000000')
+print(collection.count_documents({"Views": {"$gt": 30000000}}))  # $gt - больше
+print('Количество подписчиков < 10000')
+print(collection.count_documents({"Subscribers": {"$lt": 10000}}))  # $lt - больше
