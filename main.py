@@ -11,3 +11,25 @@ discovery_channel = {
     'subscribers': '2470000',
     'views': '425382352'
 }
+
+#  ниже показан пример того, как добавлять в коллекцию по одной записи
+result = collection.insert_one(discovery_channel)  # добавление записи в коллекцию
+print(result.inserted_id)  # id добавленного объекта
+
+more_creators = {  # на примере популярных каналов рассмотрим, как добавлять много записей сразу
+    'title': 'selfedu', 'url': 'https://www.youtube.com/@selfedu_rus', 'subscribers': '88300', 'views': '10542737',
+    'title': 'Python Hub Studio', 'url': 'https://www.youtube.com/@PythonHubStudio', 'subscribers': '132000', 'views': '6390498',
+    'title': 'Sergey Nemchinskiy', 'url': 'https://www.youtube.com/@SergeyNemchinskiy', 'subscribers': '323000', 'views': '35203048'
+}
+
+result = collection.insert_many(more_creators)
+print(result.inserted_ids)
+
+#  рассмотрим простой запрос на нахождение документа с количеством подписчиков n
+subs = 132000
+print(collection.find_one('subscribers': subs))  # сам запрос
+print(collection.count_documents('subscribers': subs))
+
+for channel in collection.find():
+    print(channel)
+
