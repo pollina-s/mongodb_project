@@ -35,6 +35,8 @@ for channel in collection.find():
 
 #  запрос сложнее с выборкой конкретных записей, подходящих под нужный запрос
 print('Количество просмотров > 30000000')
-print(collection.count_documents({"Views": {"$gt": 30000000}}))  # $gt - больше
+print(collection.count_documents({'Views': {'$gt': 30000000}}))  # $gt - больше
 print('Количество подписчиков < 10000')
-print(collection.count_documents({"Subscribers": {"$lt": 10000}}))  # $lt - больше
+print(collection.count_documents({'Subscribers': {'$lt': 10000}}))  # $lt - больше
+
+#  запросы могут быть абсолютно разные, но принцип один и тот же, небольшие изменения в коде. MongoDB - достаточно простая бд
